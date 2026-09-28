@@ -17,7 +17,9 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "seed:demo": "bun scripts/seed-demo-data.ts",
+    "verify:demo": "bun scripts/verify-demo-data.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",

@@ -1,4 +1,6 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
+import { type NextFetchEvent, NextRequest, NextResponse } from "next/server";
+import { validRequestId } from "@/lib/logger";
 
 /**
  * Next.js Proxy (Middleware)
@@ -6,7 +8,24 @@ import { clerkMiddleware } from "@clerk/nextjs/server";
  * Integrates Clerk authentication session handling with Next.js.
  * Protection is handled resource-side (e.g. in layouts/routes using `await auth.protect()`).
  */
-export default clerkMiddleware();
+const withClerk = clerkMiddleware();
+export default async function proxy(
+  request: NextRequest,
+  event: NextFetchEvent,
+) {
+  // Correlation IDs are server-generated; arbitrary client headers cannot enter logs.
+  const requestId = validRequestId(undefined);
+  const forwarded = new Headers(request.headers);
+  forwarded.set("x-pravi-request-id", requestId);
+  const publicProbe =
+    request.nextUrl.pathname === "/api/health" ||
+    request.nextUrl.pathname === "/api/ready";
+  const response = publicProbe
+    ? NextResponse.next({ request: { headers: forwarded } })
+    : await withClerk(new NextRequest(request, { headers: forwarded }), event);
+  if (response) response.headers.set("x-pravi-request-id", requestId);
+  return response;
+}
 
 export const config = {
   matcher: [

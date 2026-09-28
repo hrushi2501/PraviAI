@@ -1,0 +1,2 @@
+DashboardShell — src/app/dashboard/layout.tsx, layout, sidebar/topbar; activeItem prop.
+Button/Card/Input/Badge/Tabs — src/components/ui, basic, reusable primitives; variant/active state props. Hardcoded CSS retained.

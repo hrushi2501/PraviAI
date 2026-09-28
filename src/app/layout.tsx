@@ -1,21 +1,14 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { shadcn } from "@clerk/ui/themes";
 import { QueryProvider } from "@/components/query-provider";
 import { ThemeProvider } from "@/components/theme-provider";
-import { cn } from "@/lib/utils";
-
-const geist = Geist({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
 
 export const metadata: Metadata = {
-  title: "Pravi AI | Reusable Hackathon Boilerplate",
+  title: "Pravi AI — Public Asset Register",
   description:
-    "Production-ready hackathon boilerplate built with Next.js, Bun, Tailwind CSS, shadcn/ui, Clerk, Supabase, Drizzle ORM, and Biome.",
+    "Department asset records, inspections, complaints and restoration planning.",
 };
 
 export default function RootLayout({
@@ -24,17 +17,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={cn("font-sans", geist.variable)}
-    >
+    <html lang="en" suppressHydrationWarning className="font-sans">
       <body className="min-h-screen bg-background text-foreground antialiased">
-        <ClerkProvider appearance={{ theme: shadcn }}>
+        <ClerkProvider
+          signInUrl="/sign-in"
+          signUpUrl="/sign-up"
+          signInForceRedirectUrl="/app/dashboard"
+          signUpForceRedirectUrl="/app/dashboard"
+          appearance={{ theme: shadcn }}
+        >
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
-            enableSystem
+            defaultTheme="light"
+            forcedTheme="light"
+            enableSystem={false}
             disableTransitionOnChange
           >
             <QueryProvider>{children}</QueryProvider>
