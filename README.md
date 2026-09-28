@@ -31,26 +31,34 @@ Public infrastructure management in Indian municipalities suffers from three str
 ## 🛡️ Pravi's Core Innovations
 
 ### 1. The "Four-Eyes" Governance Principle
+
 Pravi enforces statutory separation of duties at the database and application levels:
+
 - **Maker Cannot Be Checker**: If an officer creates an asset draft or submits an inspection, the system rejects any attempt by that same officer (or their immediate subordinate) to verify or certify it.
 - **Cryptographic Audit Trail**: Every lifecycle transition is recorded in an immutable, append-only PostgreSQL ledger with actor identity, timestamp, and before/after diff snapshots.
 
 ### 2. Paired Condition Observations
+
 Pravi outlaws fake single-number aggregate health percentages. Instead, it maintains **True Paired Condition Observations**:
+
 - **First Approved Baseline**: The certified condition of each critical sub-component at initial commissioning.
 - **Latest Approved Observation**: The most recent certified field inspection rating (`Good`, `Fair`, `Poor`, `Critical`).
 - **Defect Lineage**: Clear statutory degradation tracking over time with component-level photo evidence.
 
 ### 3. Exact Restoration Backlog Accounting
+
 When an asset component drops below statutory standards, Pravi calculates the **Restoration Backlog (in INR)** based on standard departmental schedule of rates (SoR). This quantifies exact capital repair liability across divisions and districts.
 
 ### 4. Multilingual Citizen Grievance AI
+
 Citizens can report damaged roads, leaking pipelines, or failing bridges via:
+
 - **Voice Audio**: Multilingual audio recording in Gujarati, Hindi, and English, transcribed in real time via **Deepgram Nova-3**.
 - **Geotagged Photo Evidence**: Camera uploads parsed for GPS metadata and stored securely on Cloudinary CDN.
 - **Spatial & Semantic Deduplication**: Powered by **Supabase pgvector**, Pravi computes cosine similarity on complaint narratives and pairs it with 100m geo-bounding to automatically link or deduplicate grievance reports against known municipal assets.
 
 ### 5. Smooth Continuous Canvas Geospatial Engine
+
 A custom cursor-pivot continuous zooming map engine with sub-pixel inertia momentum, allowing engineers to visualize thousands of distributed assets across Gujarat without tiling lag or browser stutter.
 
 ---
@@ -118,7 +126,7 @@ State of Gujarat
 | **Executive Dashboard** | `/app/dashboard` | Drillable statutory metric cards, financial restoration backlog totals, and tabbed Attention Queue (*Critical*, *Poor*, *Reviews*, *Grievances*). |
 | **Asset Register** | `/app/assets` | Multi-factor filtering (Registration, Lifecycle, Availability), presets (*All*, *Awaiting Verification*, *My Drafts*, *Verified*), sortable headers, column visibility dropdown, page-size control (10/20/50/100), and CSV export. |
 | **Asset Detail Workspace** | `/app/assets/[id]` | Sticky tab navigation (*Overview*, *Inspections*, *Restoration Works*, *Grievances*, *Evidence*, *Audit Log*), hotkeys (`Alt+1` to `Alt+6`), quick action bar with statutory gates, and Paired Component Observations breakdown. |
-| **Operational Queues** | `/app/inspections`<br>`/app/maintenance` | Searchable inspection and work-order queues, status preset chips (*Awaiting Review*, *In Progress*, *Completed*), and mobile-responsive layouts. |
+| **Operational Queues** | `/app/inspections` / `/app/maintenance` | Searchable inspection and work-order queues, status preset chips (*Awaiting Review*, *In Progress*, *Completed*), and mobile-responsive layouts. |
 | **Grievance Resolution** | `/app/complaints` | Citizen complaint triaging, audio playback with Deepgram transcriptions, expandable narrative views, and searchable Asset Linker dropdown. |
 | **Sovereign Asset Map** | `/app/map` | Geospatial GIS inspection layer with continuous cursor-pivot zoom and cluster filtering. |
 | **Universal Navigation** | *Global* | Universal Command Palette (`⌘K` / `Ctrl+K`), Keyboard Shortcuts Overlay (`?`), and dynamic contextual breadcrumbs. |
@@ -147,11 +155,13 @@ State of Gujarat
 ## 💻 Quick Start & Local Setup
 
 ### Prerequisites
+
 - [Bun](https://bun.sh) (v1.1+ recommended)
 - A [Supabase](https://supabase.com) project with PostgreSQL
 - A [Clerk](https://clerk.com) application
 
 ### 1. Clone & Install
+
 ```bash
 git clone https://github.com/hrushi2501/PraviAI.git
 cd PraviAI
@@ -159,12 +169,15 @@ bun install
 ```
 
 ### 2. Configure Environment Variables
+
 Copy `.env.example` to `.env.local` and populate the required keys:
+
 ```bash
 cp .env.example .env.local
 ```
 
 Key environment variables:
+
 ```env
 # Database
 DATABASE_URL=postgresql://postgres:[password]@db.[ref].supabase.co:5432/postgres
@@ -192,14 +205,17 @@ QSTASH_TOKEN=...
 ```
 
 ### 3. Database Schema Push
+
 ```bash
 bun run db:push
 ```
 
 ### 4. Run Development Server
+
 ```bash
 bun run dev
 ```
+
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
@@ -236,6 +252,7 @@ The canonical production deployment is automated on **Vercel**:
 - **Framework Preset**: Next.js (App Router, Turbopack)
 
 To deploy your own instance:
+
 ```bash
 bunx vercel deploy --prod
 ```
@@ -245,11 +262,13 @@ bunx vercel deploy --prod
 ## 🔮 Assumptions & Future Scope
 
 ### Core Assumptions
+
 - **Verified Official Identities**: The governance model assumes officers authenticate through state-level identity federations (e.g., Parichay / Jan Samarth SSO), where official postings, administrative boundaries (Divisions/Subdivisions), and authorization tiers are cryptographically pinned to prevent jurisdictional overlap.
 - **Standard Schedule of Rates (SoR)**: Financial restoration backlog accounting assumes integration with standardized departmental Schedule of Rates (e.g., Gujarat R&B / CPWD SoR), using component decomposition (piers, abutments, surfacing, expansion joints) rather than arbitrary lump sums.
 - **Field Capture Integrity**: Mobile field inspections rely on device GPS and camera timestamp metadata to guarantee proof-of-presence during statutory physical observations.
 
 ### Future Scope & Roadmap
+
 - **State Grievance Federation (SWAGAT & CPGRAMS Integration)**: In future iterations, Pravi will expose a bidirectional statutory webhook bridge with State Grievance platforms (such as Gujarat's **SWAGAT** Online Redressal System and national **CPGRAMS**). Citizen complaints lodged via CM Helplines, district collectorate portals, or WhatsApp municipal bots will automatically ingest into Pravi's geospatial-vector triage engine, attach to the corresponding asset record, and feed certified completion certificates back to the state portal upon Four-Eyes verification.
 - **Automated Computer Vision & Drone Photogrammetry**: Pipeline integration for vehicle-mounted LiDAR and drone photogrammetry to automatically detect surface defects, spalling, and crack widths, matching them directly to component observation trees.
 - **Predictive Asset Deterioration Curves**: Machine learning forecasting based on historical paired observations, traffic loads, and environmental stress factors to anticipate critical degradation milestones years before structural failure occurs.
@@ -259,7 +278,8 @@ bunx vercel deploy --prod
 
 ## 📜 Canonical Agent Guidelines
 
-All AI coding agents operating in this repository adhere to the rules defined in [AGENTS.md](AGENTS.md). 
+All AI coding agents operating in this repository adhere to the rules defined in [AGENTS.md](AGENTS.md).
+
 - Agents consult domain skills in `skills/` and durable knowledge in `knowledge/`.
 - All PRs and commits must pass `bun run check && bun run typecheck && bun run test`.
 
@@ -268,4 +288,3 @@ All AI coding agents operating in this repository adhere to the rules defined in
 ## 📄 License
 
 Proprietary sovereign asset governance framework engineered for public sector evaluation. All rights reserved.
-

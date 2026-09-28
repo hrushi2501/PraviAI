@@ -46,7 +46,7 @@ function Field({ label, value }: { label: string; value: unknown }) {
   return (
     <div>
       <dt className="text-xs font-medium text-slate-500">{label}</dt>
-      <dd className="mt-1 break-words text-sm font-medium text-slate-800">
+      <dd className="mt-1 wrap-break-word text-sm font-medium text-slate-800">
         {show(value)}
       </dd>
     </div>
@@ -397,7 +397,7 @@ export function AssetDetailWorkspace({
       />
 
       {/* Sticky Tab Navigation Bar */}
-      <div className="sticky top-0 z-20 -mx-4 border-b border-slate-200 bg-white/95 px-4 backdrop-blur supports-[backdrop-filter]:bg-white/80 sm:mx-0 sm:rounded-lg sm:border sm:px-2 shadow-xs">
+      <div className="sticky top-0 z-20 -mx-4 border-b border-slate-200 bg-white/95 px-4 backdrop-blur supports-backdrop-filter:bg-white/80 sm:mx-0 sm:rounded-lg sm:border sm:px-2 shadow-xs">
         <div className="flex items-center gap-1 overflow-x-auto py-2 no-scrollbar">
           <button
             type="button"

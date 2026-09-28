@@ -238,7 +238,7 @@ export function ComponentObservationsView({
                             className="flex justify-between gap-2 text-[11px]"
                           >
                             <dt className="text-slate-500">{subKey}:</dt>
-                            <dd className="font-medium text-slate-800 break-words">
+                            <dd className="font-medium text-slate-800 wrap-break-word">
                               {String(subVal)}
                             </dd>
                           </div>
@@ -267,7 +267,7 @@ export function ComponentObservationsView({
   }
 
   return (
-    <pre className="mt-2 whitespace-pre-wrap break-words rounded bg-slate-50 p-2 text-xs text-slate-700 border">
+    <pre className="mt-2 whitespace-pre-wrap wrap-break-word rounded bg-slate-50 p-2 text-xs text-slate-700 border">
       {JSON.stringify(data, null, 2)}
     </pre>
   );

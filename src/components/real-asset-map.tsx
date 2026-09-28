@@ -610,7 +610,7 @@ function TileMap({
         ref={container}
         role="application"
         aria-label="Interactive asset map. Scroll to zoom smoothly, drag to pan."
-        className="relative h-[500px] overflow-hidden rounded-lg border bg-muted cursor-grab active:cursor-grabbing touch-none select-none focus-visible:outline-2 focus-visible:outline-primary"
+        className="relative h-125 overflow-hidden rounded-lg border bg-muted cursor-grab active:cursor-grabbing touch-none select-none focus-visible:outline-2 focus-visible:outline-primary"
         onDoubleClick={(e) => {
           if ((e.target as HTMLElement).closest("button,a")) return;
           const rect = e.currentTarget.getBoundingClientRect();
