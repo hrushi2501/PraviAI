@@ -242,6 +242,21 @@ bunx vercel deploy --prod
 
 ---
 
+## 🔮 Assumptions & Future Scope
+
+### Core Assumptions
+- **Verified Official Identities**: The governance model assumes officers authenticate through state-level identity federations (e.g., Parichay / Jan Samarth SSO), where official postings, administrative boundaries (Divisions/Subdivisions), and authorization tiers are cryptographically pinned to prevent jurisdictional overlap.
+- **Standard Schedule of Rates (SoR)**: Financial restoration backlog accounting assumes integration with standardized departmental Schedule of Rates (e.g., Gujarat R&B / CPWD SoR), using component decomposition (piers, abutments, surfacing, expansion joints) rather than arbitrary lump sums.
+- **Field Capture Integrity**: Mobile field inspections rely on device GPS and camera timestamp metadata to guarantee proof-of-presence during statutory physical observations.
+
+### Future Scope & Roadmap
+- **State Grievance Federation (SWAGAT & CPGRAMS Integration)**: In future iterations, Pravi will expose a bidirectional statutory webhook bridge with State Grievance platforms (such as Gujarat's **SWAGAT** Online Redressal System and national **CPGRAMS**). Citizen complaints lodged via CM Helplines, district collectorate portals, or WhatsApp municipal bots will automatically ingest into Pravi's geospatial-vector triage engine, attach to the corresponding asset record, and feed certified completion certificates back to the state portal upon Four-Eyes verification.
+- **Automated Computer Vision & Drone Photogrammetry**: Pipeline integration for vehicle-mounted LiDAR and drone photogrammetry to automatically detect surface defects, spalling, and crack widths, matching them directly to component observation trees.
+- **Predictive Asset Deterioration Curves**: Machine learning forecasting based on historical paired observations, traffic loads, and environmental stress factors to anticipate critical degradation milestones years before structural failure occurs.
+- **Treasury & Escrow Milestone Linking**: Direct integration with Integrated Financial Management Systems (IFMS) to lock contractor milestone disbursements until independent Four-Eyes field inspections certify restoration work.
+
+---
+
 ## 📜 Canonical Agent Guidelines
 
 All AI coding agents operating in this repository adhere to the rules defined in [AGENTS.md](AGENTS.md). 
@@ -253,3 +268,4 @@ All AI coding agents operating in this repository adhere to the rules defined in
 ## 📄 License
 
 Proprietary sovereign asset governance framework engineered for public sector evaluation. All rights reserved.
+
